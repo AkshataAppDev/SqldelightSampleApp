@@ -6,10 +6,12 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.sqldelightsampleapp.data.PersonDataSource
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import sampleapp.persondb.PersonEntity
 import javax.inject.Inject
 
+@HiltViewModel
 class PersonListViewModel @Inject constructor(private val personDataSource: PersonDataSource) :
     ViewModel() {
 
@@ -55,5 +57,9 @@ class PersonListViewModel @Inject constructor(private val personDataSource: Pers
 
     fun onLastNameChange(value: String) {
         lastNameText = value
+    }
+
+    fun onPersonDetailsDialogDismiss() {
+        personDetails = null
     }
 }
