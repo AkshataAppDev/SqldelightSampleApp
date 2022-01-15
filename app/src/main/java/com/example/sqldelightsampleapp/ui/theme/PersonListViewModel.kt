@@ -5,10 +5,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.sqldelightsampleapp.PersonEntity
 import com.example.sqldelightsampleapp.data.PersonDataSource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import sampleapp.persondb.PersonEntity
 import javax.inject.Inject
 
 @HiltViewModel
@@ -33,7 +33,11 @@ class PersonListViewModel @Inject constructor(private val personDataSource: Pers
         }
 
         viewModelScope.launch {
-            personDataSource.insertPerson(firstName = firstNameText, lastName = lastNameText)
+            personDataSource.insertPerson(
+                nationality = "UK",
+                firstName = firstNameText,
+                lastName = lastNameText
+            )
             firstNameText = ""
             lastNameText = ""
         }

@@ -1,6 +1,5 @@
 package com.example.sqldelightsampleapp.ui.theme
 
-import android.app.Person
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -24,7 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.hilt.navigation.compose.hiltViewModel
-import sampleapp.persondb.PersonEntity
+import com.example.sqldelightsampleapp.PersonEntity
 
 @Composable
 @Preview
@@ -107,7 +106,7 @@ fun PersonListScreen(viewModel: PersonListViewModel = hiltViewModel()) {
                         .padding(16.dp),
                     contentAlignment = Alignment.Center
                 ) {
-                    Text(text = "${details.firstName} ${details.lastName}")
+                    Text(text = "${details.firstName} ${details.lastName} ${details.nationality}")
                 }
 
             }

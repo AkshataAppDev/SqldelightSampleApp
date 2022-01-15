@@ -1,12 +1,12 @@
 package com.example.sqldelightsampleapp.data
 
 import com.example.sqldelightsampleapp.PersonDatabase
+import com.example.sqldelightsampleapp.PersonEntity
 import com.squareup.sqldelight.runtime.coroutines.asFlow
 import com.squareup.sqldelight.runtime.coroutines.mapToList
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
-import sampleapp.persondb.PersonEntity
 
 //PersonDatabase is generated from sqldelight
 // TODO : Inject Dispatchers
@@ -25,10 +25,15 @@ class PersonDataSourceImpl(db: PersonDatabase) : PersonDataSource {
         return queries.getAllPersons().asFlow().mapToList()
     }
 
-    override suspend fun insertPerson(firstName: String, lastName: String, id: Long?) {
+    override suspend fun insertPerson(
+        nationality: String,
+        firstName: String,
+        lastName: String,
+        id: Long?
+    ) {
         withContext(Dispatchers.IO)
         {
-            queries.insertPerson(id, firstName, lastName)
+            queries.insertPerson(id, firstName, lastName, nationality)
         }
     }
 

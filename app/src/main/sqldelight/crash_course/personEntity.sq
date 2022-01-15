@@ -1,13 +1,14 @@
-CREATE TABLE personEntity (
+CREATE TABLE IF NOT EXISTS personEntity (
 id INTEGER NOT NULL PRIMARY KEY,
 firstName TEXT NOT NULL,
-lastName TEXT NOT NULL
+lastName TEXT NOT NULL,
+nationality TEXT
 );
 
 getPersonById:
 SELECT *
 FROM personEntity
-WHERE id=:id;
+WHERE id =:id;
 
 getAllPersons:
 SELECT *
@@ -16,7 +17,7 @@ FROM personEntity;
 insertPerson:
 INSERT OR REPLACE
 INTO personEntity
-VALUES (?,?,?);
+VALUES (?,?,?,?);
 
 deletePersonById:
 DELETE FROM personEntity

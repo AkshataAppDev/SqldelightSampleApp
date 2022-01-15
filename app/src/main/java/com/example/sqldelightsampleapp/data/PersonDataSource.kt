@@ -1,7 +1,7 @@
 package com.example.sqldelightsampleapp.data
 
+import com.example.sqldelightsampleapp.PersonEntity
 import kotlinx.coroutines.flow.Flow
-import sampleapp.persondb.PersonEntity
 
 interface PersonDataSource {
 
@@ -11,7 +11,12 @@ interface PersonDataSource {
     // not suspend because returning flow
     fun getAllPersons(): Flow<List<PersonEntity>>
 
-    suspend fun insertPerson(firstName: String, lastName: String, id: Long? = null)
+    suspend fun insertPerson(
+        nationality: String,
+        firstName: String,
+        lastName: String,
+        id: Long? = null
+    )
 
     suspend fun deletePersonById(id: Long)
 
